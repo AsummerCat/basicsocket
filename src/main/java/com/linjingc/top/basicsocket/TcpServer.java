@@ -9,13 +9,13 @@ import java.net.Socket;
  * 服务端
  */
 public class TcpServer {
-	public static void main(String[] args)throws Exception {
+	public static void main(String[] args) throws Exception {
 		ServerSocket server = new ServerSocket(9091);
 		try {
 			Socket client = server.accept();
 			System.out.println("socket服务启动中");
 
-			try{
+			try {
 				BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
 				boolean flag = true;
 				int count = 1;
@@ -27,17 +27,17 @@ public class TcpServer {
 						flag = false;
 						System.out.println("客户端不想玩了！");
 					} else {
-						System.out.println("客户端说:"+ line);
+						System.out.println("客户端说:" + line);
 					}
 				}
-			}catch (Exception e){
+			} catch (Exception e) {
 				e.printStackTrace();
-			}finally {
+			} finally {
 				client.close();
 			}
-		}catch (Exception e){
- e.printStackTrace();
-		}finally {
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			server.close();
 		}
 
